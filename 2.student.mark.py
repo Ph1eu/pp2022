@@ -21,7 +21,10 @@ class student :
         return self._name
     def get_dob(self):
         return self._DoB
-    """     
+    """ 
+    '''
+    validation method section
+    '''    
     def __validate_id(self,i):
         if( i != None ):
             return i
@@ -43,9 +46,12 @@ class student :
         if(res==True):
             return d   
             
-                
+    '''
+    getter setted method section using property funtion and decorator function
+    funtion
+    '''           
     @property
-    def id(self):
+    def id(self): 
         return self._id
     @id.setter
     def id(self,i):
@@ -70,6 +76,9 @@ class course :
     def __init__(self,i,n):     
         self._course_id=i
         self._course_name=n  
+    '''
+    validation method section
+    '''     
     def __validate_id(self,i):
         if( i != None ):
             return i
@@ -80,6 +89,10 @@ class course :
             return n
         else:
             raise ValueError("invalid course name")    
+    '''
+    getter setted method section using property funtion and decorator function
+    funtion
+    '''      
     @property
     def course_id(self):
         return self._course_id
@@ -101,7 +114,9 @@ class stu_list:
     def __init__(self,s : list[student] ,c : list[course]):
         self.__student_list=s
         self.__course_list=c
-        
+    '''
+    method to input information about student to the list
+    '''
     def input(self):
         n = int(input("input number of students:"))
         while (n != 0):         
@@ -115,13 +130,18 @@ class stu_list:
                 
             self.__student_list.append(student(id,name,dob))    
             n -= 1
-                     
+    '''
+    method to display information about list using pandas 
+    '''                 
     def display(self):
         data_stu={'id':[ student.id for student in self.__student_list ],
                   'name':[student.name for student in self.__student_list],
                   'DoB':[student.DoB for student in self.__student_list]}
         df=pd.DataFrame(data=data_stu,columns=["id","name","DoB"])  
         print(df.to_string(index=False))
+    '''
+    method to input mark about student  
+    '''
     def input_mark(self):
         
         while True:
@@ -140,6 +160,9 @@ class stu_list:
             mark_list.append(m)       
         self.mark_dict[sub]=[]
         self.mark_dict.update({sub:mark_list})
+    '''
+    method to display information about student with their mark 
+    '''    
     def display_w_mark(self):
         
         data_stu={'id':[ student.id for student in self.__student_list ],
@@ -152,6 +175,9 @@ class stu_list:
 class course_list:
     def __init__(self,c : list[course]):
         self.course_list=c
+    '''
+    method to input information about course to the list
+    '''    
     def input(self):
         n = int(input("input number of courses:"))
         while (n != 0):         
@@ -165,6 +191,9 @@ class course_list:
                 
             self.course_list.append(course(id,name))    
             n -= 1
+    '''
+    method to input information about the course using pandas
+    '''        
     def display(self):
         data_course={'id':[ courses.course_id for courses in self.course_list ],
                   'name':[courses.course_name for courses in self.course_list]}
@@ -179,11 +208,7 @@ if __name__=="__main__":
        list.display()
    student_list_test.input_mark()
    student_list_test.display_w_mark()
-      
-   #student_list_test.add_stu()
-   #student_list_test.display_student_list()
-   
-   pass
+
     
     
   
