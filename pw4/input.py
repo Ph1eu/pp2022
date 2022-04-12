@@ -1,6 +1,6 @@
 import math
 
-import re 
+
 import datetime
 from domains.student_class import student 
 from domains.course_class import course
@@ -18,7 +18,7 @@ output_course_list = course_list(input_course_list)
 
 
 def _validate_stu_id(i):
-        return( len(re.findall("B[IA]\\d*-\\d{3}",i))>0)
+        return( i != None)
          
           
 def _validate_name(n):
@@ -46,7 +46,7 @@ def _repOK_stu(id,name,dob):
 def input_student():
         n = int(input("input number of students:"))
         while (n != 0):         
-            id =input("input id for student:")
+            id =int(input("input id for student:"))
             name = input("input name for student:")
             dob = input("input dob for student")
             for students in input_student_list:

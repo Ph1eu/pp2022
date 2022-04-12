@@ -7,7 +7,7 @@ from datetime import datetime
 
 
 class student :  
-   
+     
     def __init__(self,i,n,D):
           
         self._id=self.__validate_id(i)
@@ -31,7 +31,7 @@ class student :
     validation method section
     '''    
     def __validate_id(self,i):
-        if( len(re.findall("B[IA]\\d*-\\d{3}",i))>0): 
+        if( i != None): 
             return i
         else:
             raise Exception(f"invalid id :{i}")
@@ -51,4 +51,5 @@ class student :
         if(res==True):
             return d   
             
-    
+    def __lt__(self, other):
+         return self._id < other._id
